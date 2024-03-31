@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Auth;
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+    Route::get('/folders/{id}/tasks', [TaskController::class, 'index'])->name('tasks.index');
     Route::get('/folders/create', [FolderController::class, 'showCreateForm'])->name('folders.create');
     Route::post('/folders/create', [FolderController::class, 'create']);
     Route::get('/folders/{id}/tasks/create', [TaskController::class, 'showCreateForm'])->name('tasks.create');
@@ -37,8 +37,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/folders/{id}/tasks/{task_id}/edit', [TaskController::class, 'edit']);
     });
 
-  
-        Route::get('/folders/{id}/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    
+        
     
 
 Auth::routes();
